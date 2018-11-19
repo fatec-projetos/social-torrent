@@ -7,6 +7,15 @@ Social Torrent é um projeto desenvolvido para a aula do professor Thiago Colleb
   - SGDB MySQL
   - FrontEnd JavaScript utilizando os frameworks (AngularJS + Bootstrap + Font-awesome)
 
+# Funcionalidades
+
+  - Opção de cadastro
+  - Autenticação
+  - Cadastro de Magnet's
+  - Comentar e remover seus comentários em qualquer magnet
+  - Classificar um magnet
+  - Abrir o magnet diretamente no cliente torrent desejado
+
 # Executando o projeto
 
 1. Para executar o projeto basta importar o arquivo banco-de-dados.sql em sua base de dados MySQL ou MariaDB.
@@ -16,15 +25,6 @@ Social Torrent é um projeto desenvolvido para a aula do professor Thiago Colleb
 5. Após instalar digite o comando `npm start`, abra o browser no endereço `http://localhost:PORTA_DO_ENV`
 
 Pronto seguindo os passos acima o projeto vai ser executado e ficar disponível para uso.
-
-# Funcionalidades
-
-  - Opção de cadastro
-  - Autenticação
-  - Cadastro de Magnet's
-  - Comentar e remover seus comentários em qualquer magnet
-  - Classificar um magnet
-  - Abrir o magnet diretamente no cliente torrent desejado
 
 # Notas de Desenvolvimento
 Para assinar as chaves foi feito uso do JWT e a chave para assinar os tokens não é configurável. Ao digitar o comando `npm start` ele vai gerar uma chave aleatória fazendo uso da biblioteca `uuid` ou seja, caso você pare a execução e inicie novamente todos os usuários conectados vão ter que logar novamente.
