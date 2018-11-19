@@ -1,0 +1,50 @@
+<h1 class="my-4">
+    Meus Magnet's
+</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card" style="margin-top: 0">
+             <div class="card-body">
+                <h4 class="card-title">
+                    {{ form.id ? 'Editar' : 'Novo Registro'}}
+                </h4>
+                <form ng-submit="salvar()">
+                    <input type="hidden" />
+                    <input type="text" class="form-control" ng-model="form.titulo" maxlength="50" required placeholder="Titulo" />
+                    <input type="text" class="form-control" ng-model="form.imagem_url" required placeholder="URL Imagem" />
+                    <input type="text" class="form-control" ng-model="form.link_magnetico" required placeholder="Link Magnético" />
+                    <button class="btn btn-success" type="submit">Salvar</button>
+                    <button class="btn btn-warning" type="reset" ng-click="editar({})">Resetar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8" ng-init="init()">
+        <table class="table table-bordered table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Imagem</th>
+                    <th>Magnet</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="magnet in list">
+                    <td>{{ magnet.titulo }}</td>
+                    <td><a ng-href="{{ magnet.imagem_url }}" target="_blank">Abrir Imagem</a></td>
+                    <td><a ng-href="{{ magnet.link_magnetico }}" target="_blank">Magnet Link</a></td>
+                    <td>
+                            <button type="button" ng-click="deletar(magnet.id)" class="btn btn-xs btn-danger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button type="button" ng-click="editar(magnet)" class="btn btn-xs btn-warning">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

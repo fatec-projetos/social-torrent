@@ -1,0 +1,39 @@
+<h1 class="my-4">
+    <small>{{titulo}}</small>
+</h1>
+
+<div class="row" ng-init="init()">
+    <div class="col-md-6">
+        <h2>Comentários <small>({{comentarios.length}})</small></h2>
+        <button class="btn btn-primary" type="button" ng-if="!showComentarioBox" ng-click="toggleComentario()">Envie sua opnião</button>
+        <div ng-if="showComentarioBox">
+            <textarea maxlength="150" placeholder="Digite seu comentário" ng-model='novoComentario.comentario' class="form-control"></textarea>
+            <strong>Dê uma nota:</strong>
+            <input type="number" ng-model="novoComentario.estrelas" min="1" max="5" value="5" class="form-control"/>
+            <button class="btn btn-primary" ng-click="salvarComentario()">Enviar Comentário</button>
+            <button type="button" class="btn btn-default" ng-click="toggleComentario()">Cancelar</button>
+        </div>
+        <p ng-if="comentarios.length == 0">Não há comentários para o torrent, ajude a comunidade! Seja o primeiro a dizer o que achou desse conteúdo =)</p>
+        <ul class="comentarios">
+            <li ng-repeat="comentario in comentarios" class="comentario">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                    </div>
+                    <div class="col-md-10">
+                        <div style="width: 100%;">
+                            <strong>{{comentario.nome}}</strong>
+                            <button class="btn btn-danger date" ng-click="apagar(comentario.id)" ng-if="idUsuario == comentario.id_usuario">Apagar</button>
+                        </div>
+                        <div style="width: 100%; margin-left: 10px; color: #ffc107">
+                            <i class="fas fa-star" ng-repeat="estrela in comentario.estrelas"></i>
+                            <i class="far fa-star" ng-repeat="estrela in comentario.estrelasRestante"></i>
+                        </div>
+                        <p>{{comentario.comentario}}</p>
+                        <span class="date">{{comentario.data | date: 'dd/MM/yyyy HH:mm'}}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

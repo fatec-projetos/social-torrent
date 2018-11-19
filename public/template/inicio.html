@@ -1,0 +1,20 @@
+<h1 class="my-4">
+    Magnet's
+    <small>{{q}}</small>
+</h1>
+<input type="search" class="form-control" ng-model="q" placeholder="Filtrar Magnet's" aria-label="Filtrar Magnet's" />
+<div class="row" ng-init="init()">
+    <div class="col-lg-4 col-sm-6 portfolio-item" ng-repeat="m in magnets | filter: q as results track by m.id">
+        <div class="card h-100">
+            <a href="#!/comentarios/{{m.id}}/{{m.titulo}}"><img class="card-img-top" ng-src="{{m.imagem_url}}" alt=""></a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="#!/comentarios/{{m.id}}/{{m.titulo}}">{{ m.titulo }}</a>
+                </h4>
+                <p class="card-text">Enviado por <a href="javascript:;" ng-click="filtrarPorUsuario(m.nome)" title="Ver todos os envios de {{m.nome}}">{{m.nome}}</a></p>
+                <a ng-href="{{ m.link_magnetico }}" class="btn btn-primary"><i class="fa fa-magnet"></i> Download</a>
+                <a href="#!/comentarios/{{m.id}}/{{m.titulo}}" class="btn btn-warning"><i class="far fa-comments"></i> Comentários</a>
+            </div>
+        </div>
+    </div>
+</div>
